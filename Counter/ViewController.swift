@@ -7,15 +7,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    @IBOutlet weak var counterUILabel: UILabel!
-    @IBOutlet weak var incrementUIButton: UIButton!
-    @IBOutlet weak var decrementUIButton: UIButton!
-    @IBOutlet weak var resetUIButton: UIButton!
-    @IBOutlet weak var historyTextView: UITextView!
+final class ViewController: UIViewController {
+    @IBOutlet private weak var counterUILabel: UILabel!
+    @IBOutlet private weak var incrementUIButton: UIButton!
+    @IBOutlet private weak var decrementUIButton: UIButton!
+    @IBOutlet private weak var resetUIButton: UIButton!
+    @IBOutlet private weak var historyTextView: UITextView!
     
-    var count = 0
-    var history = "История изменений: \n"
+    private var count = 0
+    private var history = "История изменений: \n"
     
     
     override func viewDidLoad() {
@@ -26,32 +26,32 @@ class ViewController: UIViewController {
         historyTextView.text = history
     }
 
-    @IBAction func increment(_ sender: UIButton) {
+    @IBAction private func didTapIncrement(_ sender: UIButton) {
         count += 1
         logHistory(message: "значение изменено на +1 \n")
-        updateCount()
+        updateCounterLabel()
     }
 
-    @IBAction func decrement(_ sender: UIButton) {
+    @IBAction private func didTapDecrement(_ sender: UIButton) {
         if count > 0 {
             count -= 1
             logHistory(message: "значение изменено на -1 \n")
-            updateCount()
+            updateCounterLabel()
         } else {
             logHistory(message: "попытка уменьшить значение счётчика ниже 0 \n")
         }
     }
-    @IBAction func reset(_ sender: UIButton) {
+    @IBAction private func didTapReset(_ sender: UIButton) {
         count = 0
         logHistory(message: "значение сброшено \n")
-        updateCount()
+        updateCounterLabel()
     }
     
-    func updateCount() {
+    private func updateCounterLabel() {
         counterUILabel.text = "Значение счётчика: \(count)"
     }
     
-    func logHistory(message: String) {
+    private func logHistory(message: String) {
         let date = DateFormatter()
         date.dateFormat = "dd-MM-yyyy HH:mm:ss"
         let timestamp = date.string(from: Date())
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         updateHistory()
     }
     
-    func updateHistory() {
+    private func updateHistory() {
         historyTextView.text = history
     }
 }

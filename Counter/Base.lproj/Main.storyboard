@@ -36,7 +36,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="+"/>
                                         <connections>
-                                            <action selector="increment:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NyW-uM-Sew"/>
+                                            <action selector="didTapIncrement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NyW-uM-Sew"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="slr-Zt-Zxp">
@@ -49,7 +49,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="-"/>
                                         <connections>
-                                            <action selector="decrement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bZM-hb-lHj"/>
+                                            <action selector="didTapDecrement:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bZM-hb-lHj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ynx-wc-oN1">
@@ -62,7 +62,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.trianglehead.clockwise" catalog="system"/>
                                         <connections>
-                                            <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yKl-yc-6gP"/>
+                                            <action selector="didTapReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yKl-yc-6gP"/>
                                         </connections>
                                     </button>
                                 </subviews>
