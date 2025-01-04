@@ -73,7 +73,7 @@
                                 <rect key="frame" x="30" y="303" width="370" height="130"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="XHl-fv-9yv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="XHl-fv-9yv"/>
                                 </constraints>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
