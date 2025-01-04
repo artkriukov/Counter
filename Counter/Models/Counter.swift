@@ -8,8 +8,27 @@
 import Foundation
 
 final class Counter {
-    var count = 0
-    var history = "История изменений: \n"
+    
+    private(set) var count: Int {
+        didSet {
+            saveState()
+        }
+    }
+    
+    private(set) var history: String {
+            didSet {
+                saveState()
+            }
+        }
+    
+    private let countKey = "counterValue"
+    private let historyKey = "counterHistory"
+    
+    init() {
+        // Загружаем сохранённое состояние при создании объекта
+        self.count = UserDefaults.standard.integer(forKey: countKey)
+        self.history = UserDefaults.standard.string(forKey: historyKey) ?? "История изменений: \n"
+    }
     
     func increment() {
         count += 1
@@ -35,5 +54,10 @@ final class Counter {
         date.dateFormat = "dd-MM-yyyy HH:mm:ss"
         let timestamp = date.string(from: Date())
         history += "[\(timestamp)]: \(message) \n"
+    }
+    
+    private func saveState() {
+        UserDefaults.standard.set(count, forKey: countKey)
+        UserDefaults.standard.set(history, forKey: historyKey)
     }
 }
