@@ -21,13 +21,12 @@ final class Counter {
             }
         }
     
-    private let countKey = "counterValue"
-    private let historyKey = "counterHistory"
-    
     init() {
         // Загружаем сохранённое состояние при создании объекта
-        self.count = UserDefaults.standard.integer(forKey: countKey)
-        self.history = UserDefaults.standard.string(forKey: historyKey) ?? "История изменений: \n"
+        self.count = UserDefaults.standard
+            .integer(forKey: UserDefaultsKey.countKey.rawValue)
+        self.history = UserDefaults.standard
+            .string(forKey: UserDefaultsKey.historyKey.rawValue) ?? "История изменений: \n"
     }
     
     func increment() {
@@ -57,7 +56,7 @@ final class Counter {
     }
     
     private func saveState() {
-        UserDefaults.standard.set(count, forKey: countKey)
-        UserDefaults.standard.set(history, forKey: historyKey)
+        UserDefaults.standard.set(count, forKey: UserDefaultsKey.countKey.rawValue)
+        UserDefaults.standard.set(history, forKey: UserDefaultsKey.historyKey.rawValue)
     }
 }

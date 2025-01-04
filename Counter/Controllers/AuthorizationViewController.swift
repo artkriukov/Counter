@@ -13,29 +13,37 @@ class AuthorizationViewController: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var saveUserNameSwitch: UISwitch!
     
-    private let userName = "Artem"
-    private let password = "111"
-    
-    let nameKey = "nameKey"
-    let switchKey = "switchState"
-    
+    let userManager = UserManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let savedSwitchState = UserDefaults.standard.value(forKey: switchKey) as? Bool {
-            saveUserNameSwitch.isOn = savedSwitchState
-            userNameTF.text = userName
+        
+        saveUserNameSwitch.isOn = userManager.loadSwitchState()
+        if saveUserNameSwitch.isOn {
+            userNameTF.text = userManager.userName
         }
     }
     
     
     @IBAction func switchValueChanged(_ sender: UISwitch) {
         if sender.isOn {
-            UserDefaults.standard.set(sender.isOn, forKey: switchKey)
+            userManager.saveSwitchState(true)
         } else {
-            UserDefaults.standard.removeObject(forKey: switchKey)
+            userManager.removeSwitchState()
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
+        if userManager.validateCredentials(
+                userName: userNameTF.text,
+                password: passwordTF.text
+        ) {
+            return true
+        } else {
+            print("Введенное имя не валидно")
+            return false
+        }
     }
     
 }
