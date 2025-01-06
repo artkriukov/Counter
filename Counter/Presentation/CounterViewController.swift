@@ -25,17 +25,17 @@ final class CounterViewController: UIViewController {
         updateUI()
     }
     
-    @IBAction func didTapIncrement() {
+    @IBAction private func didTapIncrement() {
         counter.increment()
         updateUI()
     }
 
-    @IBAction func didTapDecrement() {
+    @IBAction private func didTapDecrement() {
         counter.decrement()
         updateUI()
     }
     
-    @IBAction func didTapReset() {
+    @IBAction private func didTapReset() {
         counter.reset()
         updateUI()
     }
